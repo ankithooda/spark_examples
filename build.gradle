@@ -1,0 +1,12 @@
+// Apply the java-library plugin to add support for Java Library
+apply plugin: 'java-library'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compileOnly group: 'org.apache.spark', name: 'spark-core_2.11', version: '2.1.1'
+    compileOnly group: 'org.apache.spark', name: 'spark-sql_2.11', version: '2.1.1'
+}
+
