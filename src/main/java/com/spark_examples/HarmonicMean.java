@@ -40,14 +40,14 @@ public class HarmonicMean extends UserDefinedAggregateFunction{
     }
 
     public void initialize(MutableAggregationBuffer buffer) {
-        buffer.update(0, 0L);
+        buffer.update(0, 0.0);
         buffer.update(1, 0L);
     }
 
     public void update(MutableAggregationBuffer buffer, Row input) {
         if (!input.isNullAt(0)) {
             double inputValue = input.getDouble(0);
-            if (inputValue == 0) {
+            if (inputValue <= 0) {
                 throw new InvalidInputValuesException();
             }
             double bufferSum = buffer.getDouble(0);
